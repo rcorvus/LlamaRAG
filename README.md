@@ -1,5 +1,5 @@
 # Llama3 RAG
-RAG (Retreival Augmented Generation) Q&A API that allows text and PDF files to be uploaded via api and persisted to a vector store then queried with natural language questions.  Sources are returned along with the answer in json format.
+RAG (Retrieval Augmented Generation) Q&A API that allows text and PDF files to be uploaded via api and persisted to a vector store then queried with natural language questions.  Sources are returned along with the answer in json format.
 
 Created with Python, Llama3, LangChain, Ollama and ChromaDB in a Flask API based solution.
 
