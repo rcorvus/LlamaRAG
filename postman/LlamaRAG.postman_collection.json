@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "136d3b65-c204-4ae4-80c2-32e7e6426acc",
+		"name": "LlamaRAG",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "500051"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/query",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": \"tell me a cat joke\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/query",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"query"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/pdf",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/GitHub/R2D2RAG/pdf/droids_wiki.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pdf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pdf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/ask_vector_store",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": \"What are Astromech droids called?\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ask_vector_store",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ask_vector_store"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/txt",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/GitHub/R2D2RAG/text/astromech_droid_wookiepedia.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/txt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"txt"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
