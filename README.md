@@ -3,5 +3,8 @@ RAG (Retreival Augmented Generation) Q&A API that allows text and PDF files to b
 
 Created with Python, Llama3, LangChain, Ollama and ChromaDB in a Flask API based solution.
 
+## How to use
+Create a folder called 'db'.
+
 ## Test with Postman
 Import the collection in the postman folder and run in Postman while your app.py is running
