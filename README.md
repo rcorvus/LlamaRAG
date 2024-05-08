@@ -17,3 +17,13 @@ Created with Python, Llama3, LangChain, Ollama and ChromaDB in a Flask API based
 
 ### What are astromech droids called?
    ![image](https://github.com/rcorvus/LlamaRAG/assets/5025458/0de91f6a-40d3-4127-b445-7acf03d98470)
+
+## How to install Ollama
+
+1. Download Ollama from [here](https://ollama.com/download) (it works on Linux, Mac, and Windows)  
+2. Install it.
+3. In Powershell/cmd, run ```ollama pull llama3```, which pulls the "small" 8B LLM, or ```ollama pull llama3:70b``` to pull the giant 70B LLM.  The 8b downloads pretty quickly but the 70b took several hours because it's 40GB and the connection kept crashing requiring me to keep restarting the pull.
+4. Start the ollama service on your computer by running ```ollama serve```
+5.  Verify the ollama service is running on your computer.  Here it is running on my laptop in systray:  
+![image](https://github.com/rcorvus/R2D2OpenAILlama3/assets/5025458/6e5e3906-86eb-42b0-b450-4cb8dbb8a2e7)
+
