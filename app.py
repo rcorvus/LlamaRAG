@@ -155,5 +155,33 @@ def listPost():
 
     return {"documents": documents}
 
+
+@app.route("/list_by_filename", methods=["POST"])
+def list_by_filenamePost():
+    json_content = request.json
+    filename = json_content.get("filename")
+    print(f"filename: {filename}")
+
+    vector_store = Chroma(persist_directory=folder_path, embedding_function=embedding)
+    documents = vector_store.get(where={"source": filename})
+
+    return {"documents": documents}
+
+
+
+@app.route("/delete", methods=["POST"])
+def deletePost():
+    json_content = request.json
+    filename = json_content.get("filename")
+    print(f"filename: {filename}")
+
+    vector_store = Chroma(persist_directory=folder_path, embedding_function=embedding)
+    documents = vector_store.get(where={"source": filename})
+
+    ids = documents["ids"]
+    vector_store.delete(ids)
+
+    return filename
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080, debug=True)
