@@ -147,5 +147,13 @@ def pdfPost():
     }
     return response
 
+@app.route("/list", methods=["POST"])
+def listPost():
+    print("Loading vector store")
+    vector_store = Chroma(persist_directory=folder_path, embedding_function=embedding)
+    documents = vector_store.get()
+
+    return {"documents": documents}
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080, debug=True)
