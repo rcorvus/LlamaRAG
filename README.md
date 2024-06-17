@@ -16,14 +16,10 @@ Created with Python, Llama3, LangChain, Ollama and ChromaDB in a Flask API based
    ![image](https://github.com/rcorvus/LlamaRAG/assets/5025458/28992507-ed07-4985-a6cc-c3c7616db9eb)
 
 ### How much memory does an astromech droid have?  
-![image](https://github.com/rcorvus/LlamaRAG/assets/5025458/97f17bee-e946-48be-b2a3-f59fe5034300)
 ![image](https://github.com/rcorvus/LlamaRAG/assets/5025458/c3cd4a9a-10a4-42be-9b89-5027ff0e570d)
 
-
-### Then later, when the knowledgebase is updated.  
-![image](https://github.com/rcorvus/LlamaRAG/assets/5025458/ff80a245-e480-492c-bb18-ec4f96e500e9)
+### Then later, when the knowledgebase is updated with the new base model memory document upload:
 ![image](https://github.com/rcorvus/LlamaRAG/assets/5025458/f60b047c-4f73-473a-a7e4-424f7b6728cd)
-
 
 ### What are astromech droids called?
    ![image](https://github.com/rcorvus/LlamaRAG/assets/5025458/0de91f6a-40d3-4127-b445-7acf03d98470)
