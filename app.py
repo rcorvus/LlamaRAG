@@ -85,7 +85,6 @@ def ask_vector_storePost():
 
     return response_answer
 
-
 @app.route("/txt", methods=["POST"])
 def textPost():
     file = request.files["file"]
@@ -101,12 +100,16 @@ def textPost():
     chunks = text_splitter.split_documents(docs)
     print(f"chunks len={len(chunks)}")
 
+    number_of_documents_deleted = deleteIfFoundByFilename(save_file)
+    if number_of_documents_deleted > 0:
+        print(f"Deleted existing {save_file}: {number_of_documents_deleted} chunks deleted from vector store")
 
     vector_store = Chroma.from_documents(
         documents=chunks, embedding=embedding, persist_directory=folder_path
     )
     vector_store.persist()
 
+    print(f"Successfully Uploaded {file_name}")
     response = {
         "status": "Successfully Uploaded",
         "filename": file_name,
@@ -130,11 +133,16 @@ def pdfPost():
     chunks = text_splitter.split_documents(docs)
     print(f"chunks len={len(chunks)}")
 
+    number_of_documents_deleted = deleteIfFoundByFilename(save_file)
+    if number_of_documents_deleted > 0:
+        print(f"Deleted existing {save_file}: {number_of_documents_deleted} chunks deleted from vector store")
+
     vector_store = Chroma.from_documents(
         documents=chunks, embedding=embedding, persist_directory=folder_path
     )
     vector_store.persist()
 
+    print(f"Successfully Uploaded {file_name}")
     response = {
         "status": "Successfully Uploaded",
         "filename": file_name,
