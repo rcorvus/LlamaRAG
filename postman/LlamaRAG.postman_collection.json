@@ -70,7 +70,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"query\": \"What are Astromech droids called?\"\r\n}",
+					"raw": "{\r\n    \"query\": \"What does a protocol droid look like?\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -115,6 +115,62 @@
 					"port": "8080",
 					"path": [
 						"txt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/list_by_filename",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"filename\": \"text/astromech_droid_wookiepedia.txt\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/list_by_filename",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"list_by_filename"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/delete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"filename\": \"pdf/droids_wiki.pdf\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"delete"
 					]
 				}
 			},
