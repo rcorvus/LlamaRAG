@@ -19,6 +19,8 @@ text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=1024, chunk_overlap=80, length_function=len, is_separator_regex=False
 )
 
+vector_store = Chroma(persist_directory=folder_path, embedding_function=embedding)
+
 ## Get result and cite sources
 def process_llm_response(llm_response):
     result = llm_response['result']
@@ -62,7 +64,6 @@ def ask_vector_storePost():
     print(f"query: {query}")
 
     print("Loading vector store")
-    vector_store = Chroma(persist_directory=folder_path, embedding_function=embedding)
 
     retriever = vector_store.as_retriever(
         search_type="similarity_score_threshold",
@@ -103,10 +104,7 @@ def textPost():
     vector_store = Chroma.from_documents(
         documents=chunks, embedding=embedding, persist_directory=folder_path
     )
-
-    print("persisting vector store")
     vector_store.persist()
-    print("vector store persisted")
 
     response = {
         "status": "Successfully Uploaded",
@@ -134,10 +132,7 @@ def pdfPost():
     vector_store = Chroma.from_documents(
         documents=chunks, embedding=embedding, persist_directory=folder_path
     )
-
-    print("persisting vector store")
     vector_store.persist()
-    print("vector store persisted")
 
     response = {
         "status": "Successfully Uploaded",
@@ -149,25 +144,21 @@ def pdfPost():
 
 @app.route("/list", methods=["POST"])
 def listPost():
-    print("Loading vector store")
-    vector_store = Chroma(persist_directory=folder_path, embedding_function=embedding)
     documents = vector_store.get()
-
     return {"documents": documents}
 
+def listByFilename(filename):
+    documents = vector_store.get(where={"source": filename})
+    return documents
 
 @app.route("/list_by_filename", methods=["POST"])
 def list_by_filenamePost():
     json_content = request.json
     filename = json_content.get("filename")
     print(f"filename: {filename}")
-
-    vector_store = Chroma(persist_directory=folder_path, embedding_function=embedding)
-    documents = vector_store.get(where={"source": filename})
+    documents = listByFilename(filename)
 
     return {"documents": documents}
-
-
 
 @app.route("/delete", methods=["POST"])
 def deletePost():
@@ -175,13 +166,16 @@ def deletePost():
     filename = json_content.get("filename")
     print(f"filename: {filename}")
 
-    vector_store = Chroma(persist_directory=folder_path, embedding_function=embedding)
     documents = vector_store.get(where={"source": filename})
-
-    ids = documents["ids"]
-    vector_store.delete(ids)
-
-    return filename
+    document_ids = documents["ids"]
+    vector_store.delete(document_ids)
+    
+    response = {
+        "status": "Successfully Deleted",
+        "filename": filename,
+        "number_of_documents": len(document_ids),
+    }
+    return response
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080, debug=True)
