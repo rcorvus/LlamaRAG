@@ -1,5 +1,5 @@
 # Llama3 RAG
-RAG (Retrieval Augmented Generation) Q&A API that allows text and PDF files to be uploaded via api and persisted to a vector store then queried with natural language questions.  Sources are returned along with the answer in json format. Previously uploaded documents are overwritten when a document with the same filename is uploaded again. Note: Since there's no way to know if the chunks of the new document will align with the old document, this solution simply deletes all the chunks of the old document before uploading the chunks of the new document.
+RAG (Retrieval Augmented Generation) Q&A API that allows text and PDF files to be uploaded via api and persisted to a vector store then queried with natural language questions.  Sources are returned along with the answer in json format. Previously uploaded documents are overwritten when a document with the same filename is uploaded again. Note: Since there's no way to know if the chunks of the new document will align with the old document (even if there are the same number of chunks because the information could have been rearranged), this solution simply deletes all the chunks of the old document before uploading the chunks of the new document.
 
 Created with Python, Llama3, LangChain, Ollama and ChromaDB in a Flask API based solution.
 
