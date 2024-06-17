@@ -13,7 +13,8 @@ Created with Python, Llama3, LangChain, Ollama and ChromaDB in a Flask API based
 
 ## Example queries
 ### What does a protocol droid look like?
-   ![image](https://github.com/rcorvus/LlamaRAG/assets/5025458/80526c04-c370-44a4-8b2f-ed1830d23fe7)  
+   ![image](https://github.com/rcorvus/LlamaRAG/assets/5025458/28992507-ed07-4985-a6cc-c3c7616db9eb)
+
 ### How much memory does an astromech droid have?  
 ![image](https://github.com/rcorvus/LlamaRAG/assets/5025458/97f17bee-e946-48be-b2a3-f59fe5034300)
 ![image](https://github.com/rcorvus/LlamaRAG/assets/5025458/c3cd4a9a-10a4-42be-9b89-5027ff0e570d)
