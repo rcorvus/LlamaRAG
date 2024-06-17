@@ -101,6 +101,7 @@ def textPost():
     chunks = text_splitter.split_documents(docs)
     print(f"chunks len={len(chunks)}")
 
+
     vector_store = Chroma.from_documents(
         documents=chunks, embedding=embedding, persist_directory=folder_path
     )
@@ -151,6 +152,16 @@ def listByFilename(filename):
     documents = vector_store.get(where={"source": filename})
     return documents
 
+def deleteIfFoundByFilename(filename):
+    documents = listByFilename(filename)
+    if not documents:
+        return 0
+    document_ids = documents["ids"]
+    if not document_ids:
+        return 0
+    vector_store.delete(document_ids)
+    return len(document_ids)
+
 @app.route("/list_by_filename", methods=["POST"])
 def list_by_filenamePost():
     json_content = request.json
@@ -166,14 +177,12 @@ def deletePost():
     filename = json_content.get("filename")
     print(f"filename: {filename}")
 
-    documents = vector_store.get(where={"source": filename})
-    document_ids = documents["ids"]
-    vector_store.delete(document_ids)
+    number_of_documents_deleted = deleteIfFoundByFilename(filename)
     
     response = {
         "status": "Successfully Deleted",
         "filename": filename,
-        "number_of_documents": len(document_ids),
+        "number_of_documents_deleted": number_of_documents_deleted,
     }
     return response
 
