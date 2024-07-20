@@ -1,2 +1,2 @@
 Astromech Memory
-All astromechs have a basic memory of 8 teraquads memory
+All astromechs have a basic memory of 16 teraquads memory

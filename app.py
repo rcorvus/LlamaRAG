@@ -2,18 +2,20 @@ from flask import Flask, request
 from langchain_community.llms import Ollama
 from langchain_community.vectorstores import Chroma
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
+from langchain_community.embeddings.openai import OpenAIEmbeddings
 from langchain_community.document_loaders import PDFPlumberLoader
 from langchain_community.document_loaders import TextLoader
 from langchain.chains import RetrievalQA
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 folder_path = "db"
 
 cached_llm = Ollama(model="llama3")
 
-embedding = FastEmbedEmbeddings()
+embedding = OpenAIEmbeddings()
 
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=1024, chunk_overlap=80, length_function=len, is_separator_regex=False
