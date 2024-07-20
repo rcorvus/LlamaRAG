@@ -1,5 +1,5 @@
 # Llama3 RAG
-RAG (Retrieval Augmented Generation) Q&A API that allows text and PDF files to be uploaded via api and persisted to a vector store then queried with natural language questions.  Sources are returned along with the answer in json format. Previously uploaded documents are overwritten when a document with the same filename is uploaded again. Note: Since there's no way to know if the chunks of the new document will align with the old document, this solution simply deletes all the chunks of the old document before uploading the chunks of the new document.
+RAG (Retrieval Augmented Generation) Q&A API that allows text and PDF files to be uploaded via api and persisted to a vector store then queried with natural language questions.  Sources are returned along with the answer in json format. Previously uploaded documents are overwritten when a document with the same filename is uploaded again. Note: Since there's no way to know if the chunks of the new document will align with the old document (even if there are the same number of chunks because the information could have been rearranged), this solution simply deletes all the chunks of the old document before uploading the chunks of the new document.
 
 Created with Python, Llama3, LangChain, Ollama and ChromaDB in a Flask API based solution.
 
@@ -13,7 +13,13 @@ Created with Python, Llama3, LangChain, Ollama and ChromaDB in a Flask API based
 
 ## Example queries
 ### What does a protocol droid look like?
-   ![image](https://github.com/rcorvus/LlamaRAG/assets/5025458/80526c04-c370-44a4-8b2f-ed1830d23fe7)  
+   ![image](https://github.com/rcorvus/LlamaRAG/assets/5025458/28992507-ed07-4985-a6cc-c3c7616db9eb)
+
+### How much memory does an astromech droid have?  
+![image](https://github.com/rcorvus/LlamaRAG/assets/5025458/c3cd4a9a-10a4-42be-9b89-5027ff0e570d)
+
+### Then later, when the knowledgebase is updated with the new base model memory document upload:
+![image](https://github.com/rcorvus/LlamaRAG/assets/5025458/f60b047c-4f73-473a-a7e4-424f7b6728cd)
 
 ### What are astromech droids called?
    ![image](https://github.com/rcorvus/LlamaRAG/assets/5025458/0de91f6a-40d3-4127-b445-7acf03d98470)
